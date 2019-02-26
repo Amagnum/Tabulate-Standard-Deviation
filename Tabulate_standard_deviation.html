@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title> Tabulate Standard Deviation</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <center>
+      <h2> Tabulate Standard Deviation<blockquote class="text-primary"><sub>- by Adarsh</sub></blockquote></h2>
+
+
+ <form>
+   <hr>
+   INPUT :
+ <input type="number" name="enter value" value="" id="inp"><p></p>
+ <button type="button" class='btn-success' name="button" onclick="additem()">Add</button>
+<button type="button" class='btn-warning' name="button" onclick="calculate()">calculate</button>
+  </form>
+  <p>
+<hr>
+  <table style="width:80%" border="2" class="table table-striped">
+  <tr id='xi'>
+    <td><b> <center>x<sub>i</sub></b></td>
+  </tr>
+  <tr id='xix'>
+    <td><b> <center>|x<sub>i</sub> - x<sup>~</sup>|</b></td>
+  </tr>
+  <tr id='xis'>
+    <td><b><center> (x<sub>i</sub> - x<sup>~</sup>)<sup>2</sup> </b> </td>
+  </tr>
+  <tr id='mean'>
+    <td> <b> <center>Mean(xi)</b></td>
+  </tr>
+  <tr id='sumsq'>
+    <td><b> <center>sum(|x<sub>i</sub> - x<sup>~</sup>|<sup>2</sup>)</b></td>
+  </tr>
+  <tr id='meansq'>
+    <td><b> <center>Mean(|x<sub>i</sub> - x<sup>~</sup>|<sup>2</sup>)</b></td>
+  </tr>
+  <tr id='sd'>
+    <td><b> <center><center>S.D.</b></td>
+  </tr>
+</table>
+</center>
+</p>
+
+<script>
+  var i=0;
+  var data=[];
+  function additem(){
+    var add=document.getElementById("xi");
+    data[i]=document.getElementById("inp").value;
+    add.innerHTML += '<td>'+ document.getElementById("inp").value +'</td>';
+    document.getElementById("inp").value='';
+  i++;
+  };
+
+  function calculate(){
+      var n=data.length;
+      var sum=0;
+      var k;
+      var xix=[];
+      for(k=0;k<n;k++){
+        data[k] = parseFloat(data[k]);
+        sum +=data[k];
+      }
+      mean=sum/n;
+      document.getElementById("mean").innerHTML+='<td>'+mean+'</td>';
+      sum=0;
+      for(k=0;k<n;k++){
+        xix[k]=Math.abs(mean-data[k]);
+        xis[k]=xix[k]*xix[k];
+        document.getElementById("xix").innerHTML+='<td>'+xix[k]+'</td>';
+        document.getElementById("xis").innerHTML+='<td>'+xis[k]+'</td>';
+        sum+=xis[k];
+      }
+      document.getElementById("sumsq").innerHTML+='<td>'+sum+'</td>';
+      mean=sum/n;
+      document.getElementById("meansq").innerHTML+='<td>'+mean+'</td>';
+      document.getElementById("sd").innerHTML+='<td>'+Math.sqrt(mean)+'</td>';
+
+  };
+
+  function reset(){
+    location.reload();
+  };
+</script>
+<hr>
+<center><button type="button" class='btn-danger' name="button" onclick="reset()">Reset</button>
+  <hr>
+  mainly use it for physics lab ^_^
+  </body>
+</html>
