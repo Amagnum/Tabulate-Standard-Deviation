@@ -4,7 +4,7 @@ This HTML PAGE will help you tabulate standard deviation (was created for physic
 * Bootstrap, HTML5, Javascript (all in same page).
 * Page will work offline.
 * Dynamically add fields into html page using javascript.
-* Used Math.sqrt() and Math.abs() for square root and absolute respectively.
+* Used Math.sqrt() and Math.abs() for square root and absolute operations respectively.
 
 
 Instructions (how to use):
